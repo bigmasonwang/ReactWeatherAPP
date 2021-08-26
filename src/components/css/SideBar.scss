@@ -1,0 +1,41 @@
+@import './index.scss';
+
+.side_bar {
+  margin: 32px;
+  form {
+    @extend %flex-central;
+    input {
+      padding: 14px;
+      border-radius: 10px;
+      border:0;
+    }
+    button {
+      background-color: $secondary-color;
+      border:$secondary-color solid;
+      padding: 10px;
+      border-radius: 10px;
+      &:hover{
+        background-color: $primary-color-light;
+        border: $primary-color-light solid;
+      }
+      &:active{
+        background-color: $primary-color;
+        border:$primary-color solid;
+      }
+    }
+  }
+
+  .side_bar_history {
+    .history{
+      margin-top: 16px;
+      width: 284px;
+      height:44px;
+      line-height: 44px;
+      border-radius: 10px;
+      background-color: $secondary-color;
+      h3{
+        margin-left: 16px;
+      }
+    }
+  }
+}

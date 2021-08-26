@@ -1,0 +1,18 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color-dark: #B8B5FF;
+$primary-color: #9AB3F5;
+$primary-color-light: #A3D8F4;
+$secondary-color: #f1f6f9;
+
+%flex-central {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+%flex-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

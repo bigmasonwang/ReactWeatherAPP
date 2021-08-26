@@ -1,0 +1,22 @@
+@import './index.scss';
+
+.weather_screen {
+  @extend %flex-central;
+  flex-wrap: wrap;
+  font: 100%$font-stack;
+  min-height: 100vh;
+  background-color: $primary-color;
+  .weather_screen_container {
+    @extend %flex-central;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 16px;
+    max-width: 1366px;
+    border-radius: 24px;
+    background-color: $secondary-color;
+    h3 {
+      margin-top: 0;
+    }
+  }
+}

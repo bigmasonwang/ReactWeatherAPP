@@ -1,7 +1,9 @@
+import WeatherScreen from "./components/WeatherScreen";
+import 'normalize.css'
 
 function App() {
   return (
-    <h1>Hello</h1>
+    <WeatherScreen />
   );
 }
 
