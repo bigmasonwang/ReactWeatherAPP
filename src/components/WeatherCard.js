@@ -5,10 +5,9 @@ const WeatherCard = ({curWeather, curCity}) => {
     <div className='weather_card'>
       <p className='card_time'>{new Date(curWeather.dt*1000).toLocaleDateString()}</p>
       <h1 className='card_location'>{curCity}</h1>
-      <p className='card_text'>Chance of Rina: 30%</p>
-      <h2 className='card_temprature'> 17°</h2>
-      <p className=''>HUMIDITY 64%</p>
-      <p className=''>WIND 12 K/M</p>
+      <h2 className='card_temprature'>{Math.round(curWeather.temp)}°</h2>
+      <p className=''>HUMIDITY {curWeather.humidity}%</p>
+      <p className=''>WIND {curWeather.wind_speed} m/s</p>
     </div>
   );
 }

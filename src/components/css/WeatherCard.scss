@@ -1,22 +1,5 @@
 @import './index.scss';
 
 .weather_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 240px;
-  height: 320px;
-  border-radius: 16px;
-  margin: 16px;
-  background-color: $primary-color-light;
-  p {
-    margin: 0;
-  }
-  h1 {
-    margin: 0;
-  }
-  h2 {
-    margin: 0;
-  }
+  @extend %weather-card;
 }

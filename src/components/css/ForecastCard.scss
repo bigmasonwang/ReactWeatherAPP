@@ -1,13 +1,5 @@
 @import './index.scss';
 
 .forecast_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 240px;
-  height: 320px;
-  border-radius: 16px;
-  margin: 16px;
-  background-color: $primary-color-light;
+  @extend %weather-card;
 }
