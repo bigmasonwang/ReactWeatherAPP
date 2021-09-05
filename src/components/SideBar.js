@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './css/SideBar.scss';
 
 const SideBar = (props) => {
   const [searchText, setSearchText] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
+
+
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
@@ -13,10 +16,9 @@ const SideBar = (props) => {
     }
     setSearchText('');
   };
-  const handleHistoryClick = (e) =>{
-    // console.log(e.target.innerHTML);
+  const handleHistoryClick = (e) => {
     props.handleCityChange(e.target.innerHTML);
-  }
+  };
 
   return (
     <div className='side_bar'>
