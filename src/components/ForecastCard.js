@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/ForecastCard.scss';
 
-const MainWeatherCard = ({ dailyWeather, curCity }) => {
+const MainWeatherCard = ({ dailyWeather }) => {
   if (dailyWeather) {
     const date = new Date(dailyWeather.dt * 1000);
     const weather = dailyWeather.weather[0];

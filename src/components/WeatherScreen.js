@@ -3,10 +3,10 @@ import axios from 'axios';
 import SideBar from './SideBar';
 import WeatherCard from './WeatherCard';
 import './css/WeatherScreen.scss';
-import MainWeatherCard from './MainWeatherCard';
+import ForecastCard from './ForecastCard';
 
 const WeatherScreen = () => {
-  const [curCity, setCurCity] = useState('beijing');
+  const [location, setLocation] = useState('beijing');
   const [curWeather, setCurWeather] = useState({});
   const [dailyWeather, setDailyWeather] = useState([]);
 
@@ -14,7 +14,7 @@ const WeatherScreen = () => {
     const fetchWeatherData = () => {
       axios
         .get(
-          `http://localhost:3001/api/weather?city=${curCity}`
+          `http://localhost:3001/api/weather?place_id=${location.place_id}`
         )
         .then((res) => {
           // console.log(res.data);
@@ -23,21 +23,19 @@ const WeatherScreen = () => {
         });
     };
     fetchWeatherData();
-  }, [curCity]);
+  }, [location]);
   return (
     <div className='weather_screen'>
       <SideBar
-        curCity={curCity}
-        handleCityChange={(city) => setCurCity(city)}
+        handleLocationChange={(location) => setLocation(location)}
       />
       <div className='weather_screen_container'>
-        <WeatherCard curWeather={curWeather} curCity={curCity} />
+        <WeatherCard curWeather={curWeather} curCity={location.locationName} />
         {[1, 2, 3, 4].map((i) => {
           return (
-            <MainWeatherCard
+            <ForecastCard
               key={i}
               dailyWeather={dailyWeather[i] || null}
-              curCity={curCity}
             />
           );
         })}

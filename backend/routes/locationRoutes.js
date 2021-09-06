@@ -3,6 +3,6 @@ const getLocation = require('../controller/locationAutocompleteController');
 
 const router = express.Router();
 
-router.route('/autocomplete').get(getLocation);
+router.route('/').get(getLocation);
 
 module.exports = router;

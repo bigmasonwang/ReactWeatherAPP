@@ -3,21 +3,49 @@ import axios from 'axios';
 import './css/SideBar.scss';
 
 const SideBar = (props) => {
-  const [searchText, setSearchText] = useState('');
+  const [input, setInput] = useState('');
+  const [locations, setLocations] = useState([]);
   const [searchHistory, setSearchHistory] = useState([]);
 
-
+  useEffect(() => {
+    async function fetchLocations() {
+      const result = await axios.get(
+        `http://localhost:3001/api/location/?input=${input}`
+      );
+      setLocations(result.data);
+    }
+    fetchLocations();
+  }, [input]);
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
-    if (!searchHistory.includes(searchText) && searchText) {
-      setSearchHistory([searchText, ...searchHistory]);
-      props.handleCityChange(searchText);
+    const location = locations[0];
+    // set search history
+    if (
+      searchHistory.filter((history) => history.place_id === location.place_id)
+        .length === 0
+    ) {
+      setSearchHistory([location, ...searchHistory]);
     }
-    setSearchText('');
+    // pass location to props
+    props.handleLocationChange(location);
+    setInput('');
   };
+
+  const handleLocationClick = (e) => {
+    const place_id = e.target.getAttribute('place_id');
+    // get clicked location object
+    const clickedLocation = locations.filter(
+      (location) => location.place_id === place_id
+    )[0];
+    setInput(clickedLocation.locationName);
+  };
+
   const handleHistoryClick = (e) => {
-    props.handleCityChange(e.target.innerHTML);
+    const place_id = e.target.getAttribute('place_id');
+    // pass location to props
+    const location = searchHistory.filter(history=>history.place_id === place_id)[0]
+    props.handleLocationChange(location);
   };
 
   return (
@@ -29,16 +57,36 @@ const SideBar = (props) => {
           name='text'
           placeholder='Search Location'
           autoComplete='off'
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <button onClick={handleSearchButtonClick}>Search</button>
       </form>
+      <div className='side_bar_locations'>
+        {locations &&
+          locations.map((location) => (
+            <div
+              className='location'
+              key={location.place_id}
+              place_id={location.place_id}
+              onClick={handleLocationClick}
+            >
+              <h4 place_id={location.place_id}>{location.locationName}</h4>
+              <p place_id={location.place_id}>{location.region}</p>
+            </div>
+          ))}
+      </div>
       <div className='side_bar_history'>
         {searchHistory &&
           searchHistory.map((history) => (
-            <div className='history' key={history} onClick={handleHistoryClick}>
-              <h3>{history}</h3>
+            <div
+              className='history'
+              key={history.place_id}
+              place_id={history.place_id}
+              onClick={handleHistoryClick}
+            >
+              <h3 place_id={history.place_id}>{history.locationName}</h3>
+              <p place_id={history.place_id}>{history.region}</p>
             </div>
           ))}
       </div>
