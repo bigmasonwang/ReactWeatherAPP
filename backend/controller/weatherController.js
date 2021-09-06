@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const getWeather = (req, res)=>{
+const getWeather = (req, res) => {
   const city = req.query.city;
 
   axios
@@ -23,6 +23,6 @@ const getWeather = (req, res)=>{
         res.sendStatus(500);
       }
     });
-}
+};
 
 module.exports = getWeather;
