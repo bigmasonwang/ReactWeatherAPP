@@ -53,7 +53,9 @@ const SideBar = (props) => {
   const handleHistoryClick = (e) => {
     const place_id = e.target.getAttribute('place_id');
     // pass location to props
-    const location = searchHistory.filter(history=>history.place_id === place_id)[0]
+    const location = searchHistory.filter(
+      (history) => history.place_id === place_id
+    )[0];
     props.handleLocationChange(location);
   };
 

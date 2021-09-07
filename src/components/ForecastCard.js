@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/ForecastCard.scss';
 
-const MainWeatherCard = ({ dailyWeather }) => {
+const ForecastCard = ({ dailyWeather }) => {
   if (dailyWeather) {
     const date = new Date(dailyWeather.dt * 1000);
     const weather = dailyWeather.weather[0];
@@ -25,10 +25,9 @@ const MainWeatherCard = ({ dailyWeather }) => {
         </p>
       </div>
     );
-  }
-  else {
-    return <div className='forecast_card'></div>
+  } else {
+    return <div className='forecast_card'></div>;
   }
 };
 
-export default MainWeatherCard;
+export default ForecastCard;

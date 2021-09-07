@@ -17,9 +17,7 @@ const WeatherScreen = () => {
   useEffect(() => {
     const fetchWeatherData = () => {
       axios
-        .get(
-          `http://localhost:3001/api/weather?place_id=${location.place_id}`
-        )
+        .get(`http://localhost:3001/api/weather?place_id=${location.place_id}`)
         .then((res) => {
           // console.log(res.data);
           setCurWeather(res.data.current);
@@ -30,17 +28,12 @@ const WeatherScreen = () => {
   }, [location]);
   return (
     <div className='weather_screen'>
-      <SideBar
-        handleLocationChange={(location) => setLocation(location)}
-      />
+      <SideBar handleLocationChange={(location) => setLocation(location)} />
       <div className='weather_screen_container'>
         <WeatherCard curWeather={curWeather} curCity={location.locationName} />
         {[1, 2, 3, 4].map((i) => {
           return (
-            <ForecastCard
-              key={i}
-              dailyWeather={dailyWeather[i] || null}
-            />
+            <ForecastCard key={i} dailyWeather={dailyWeather[i] || null} />
           );
         })}
       </div>
