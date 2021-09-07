@@ -6,7 +6,11 @@ import './css/WeatherScreen.scss';
 import ForecastCard from './ForecastCard';
 
 const WeatherScreen = () => {
-  const [location, setLocation] = useState('beijing');
+  const [location, setLocation] = useState({
+    locationName: 'Sydney',
+    region: 'NSW, Australia',
+    place_id: 'ChIJP3Sa8ziYEmsRUKgyFmh9AQM',
+  });
   const [curWeather, setCurWeather] = useState({});
   const [dailyWeather, setDailyWeather] = useState([]);
 

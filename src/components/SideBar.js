@@ -38,7 +38,16 @@ const SideBar = (props) => {
     const clickedLocation = locations.filter(
       (location) => location.place_id === place_id
     )[0];
-    setInput(clickedLocation.locationName);
+    if (
+      searchHistory.filter(
+        (history) => history.place_id === clickedLocation.place_id
+      ).length === 0
+    ) {
+      setSearchHistory([clickedLocation, ...searchHistory]);
+    }
+    props.handleLocationChange(clickedLocation);
+    // setInput(clickedLocation.locationName);
+    setInput('');
   };
 
   const handleHistoryClick = (e) => {

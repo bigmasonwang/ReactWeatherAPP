@@ -9,6 +9,9 @@
       padding: 14px;
       border-radius: 10px;
       border: 0;
+      &:focus {
+        outline: none;
+      }
     }
     button {
       background-color: $secondary-color;

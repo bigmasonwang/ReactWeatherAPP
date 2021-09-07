@@ -18,8 +18,6 @@ const getLocation = (req, res) => {
         const place_id = location.place_id;
         return returnData.push({ locationName, region, place_id });
       });
-      // console.log(returnData);
-      // console.log(JSON.stringify(response.data, null, 2));
       res.status(200).json(returnData);
     })
     .catch(function (error) {
